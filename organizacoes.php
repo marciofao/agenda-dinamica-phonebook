@@ -3,7 +3,7 @@
 $title="Organizações";
 require_once 'header.php';
 
-$consulta = $con->query("SELECT * FROM organizacoes;");
+
 
 
 
@@ -26,8 +26,11 @@ $consulta = $con->query("SELECT * FROM organizacoes;");
 		</tr>
 	</thead>
 	<tbody>
-
-		<?php  while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) { ?>
+		
+		<?php  
+		$consulta = $con->query("SELECT * FROM organizacoes;");
+		while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) { 
+			?>
 			<tr>
 				<td>
 
@@ -42,10 +45,10 @@ $consulta = $con->query("SELECT * FROM organizacoes;");
 				</td>
 			</tr>
 
-		<?php } ?>
+			<?php } ?>
 
 
-		
+			
 		</tbody>
 	</table><!-- /.table-stripped -->
 
