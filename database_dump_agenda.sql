@@ -28,16 +28,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `contatos` (
   `cod` bigint(20) UNSIGNED NOT NULL,
-  `nome` varchar(30) COLLATE utf8_bin NOT NULL,
-  `sobrenome` varchar(60) COLLATE utf8_bin NOT NULL,
-  `endereco` varchar(60) COLLATE utf8_bin NOT NULL,
-  `cep` varchar(9) COLLATE utf8_bin NOT NULL,
-  `bairro` varchar(30) COLLATE utf8_bin NOT NULL,
-  `cidade` varchar(30) COLLATE utf8_bin NOT NULL,
+  `nome` varchar(30) COLLATE utf8_general_ci NOT NULL,
+  `sobrenome` varchar(60) COLLATE utf8_general_ci NOT NULL,
+  `endereco` varchar(60) COLLATE utf8_general_ci NOT NULL,
+  `cep` varchar(9) COLLATE utf8_general_ci NOT NULL,
+  `bairro` varchar(30) COLLATE utf8_general_ci NOT NULL,
+  `cidade` varchar(30) COLLATE utf8_general_ci NOT NULL,
   `cod_organizacao` int(11) NOT NULL,
   `data_criacao` datetime NOT NULL,
   `data_modificacao` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -48,8 +48,8 @@ CREATE TABLE `contatos` (
 CREATE TABLE `emails` (
   `cod` bigint(20) UNSIGNED NOT NULL,
   `cod_contato` int(11) NOT NULL,
-  `email` varchar(60) COLLATE utf8_bin NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `email` varchar(60) COLLATE utf8_general_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -59,9 +59,9 @@ CREATE TABLE `emails` (
 
 CREATE TABLE `organizacoes` (
   `cod` bigint(20) UNSIGNED NOT NULL,
-  `nome` varchar(60) COLLATE utf8_bin NOT NULL,
-  `telefone` varchar(14) COLLATE utf8_bin NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `nome` varchar(60) COLLATE utf8_general_ci NOT NULL,
+  `telefone` varchar(14) COLLATE utf8_general_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `organizacoes`
@@ -80,9 +80,9 @@ INSERT INTO `organizacoes` (`cod`, `nome`, `telefone`) VALUES
 CREATE TABLE `telefones` (
   `cod` bigint(20) UNSIGNED NOT NULL,
   `cod_contato` int(11) NOT NULL,
-  `telefone` varchar(14) COLLATE utf8_bin NOT NULL,
-  `etiqueta` varchar(20) COLLATE utf8_bin NOT NULL COMMENT 'CONSTRAINT chk_Frequency CHECK (Frequency IN (''trabalho'', ''residencial'', ''celular''))'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `telefone` varchar(14) COLLATE utf8_general_ci NOT NULL,
+  `etiqueta` varchar(20) COLLATE utf8_general_ci NOT NULL COMMENT 'CONSTRAINT chk_Frequency CHECK (Frequency IN (''trabalho'', ''residencial'', ''celular''))'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Indexes for dumped tables

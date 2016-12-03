@@ -21,9 +21,9 @@ require_once 'conecta.php';
 	<title><?php echo 	$title ?> - Agenda</title>
 	<meta name="description" content="Agenda Telefonica">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 
