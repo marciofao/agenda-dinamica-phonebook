@@ -35,7 +35,7 @@ require_once 'header.php';
 		</label>
 		<label class="col-md-12 col-sm-12">
 			Organização:
-			<select required="required" name="organizacao" class="form-control">
+			<select required="required" name="cod_organizacao" class="form-control">
 				<option value="">selecione...</option>
 				<?php  
 				$consulta = $con->query("SELECT * FROM organizacoes;");

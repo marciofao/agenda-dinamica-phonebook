@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 03-Dez-2016 às 15:09
+-- Generation Time: 03-Dez-2016 às 17:38
 -- Versão do servidor: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -31,7 +31,7 @@ CREATE TABLE `contatos` (
   `nome` varchar(30) COLLATE utf8_bin NOT NULL,
   `sobrenome` varchar(60) COLLATE utf8_bin NOT NULL,
   `endereco` varchar(60) COLLATE utf8_bin NOT NULL,
-  `cep` varchar(8) COLLATE utf8_bin NOT NULL,
+  `cep` varchar(9) COLLATE utf8_bin NOT NULL,
   `bairro` varchar(30) COLLATE utf8_bin NOT NULL,
   `cidade` varchar(30) COLLATE utf8_bin NOT NULL,
   `cod_organizacao` int(11) NOT NULL,
@@ -62,6 +62,14 @@ CREATE TABLE `organizacoes` (
   `nome` varchar(60) COLLATE utf8_bin NOT NULL,
   `telefone` varchar(14) COLLATE utf8_bin NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Extraindo dados da tabela `organizacoes`
+--
+
+INSERT INTO `organizacoes` (`cod`, `nome`, `telefone`) VALUES
+(1, 'Tabajara', '(53)32276972'),
+(3, 'Capivara', '5332276971');
 
 -- --------------------------------------------------------
 
@@ -124,7 +132,7 @@ ALTER TABLE `emails`
 -- AUTO_INCREMENT for table `organizacoes`
 --
 ALTER TABLE `organizacoes`
-  MODIFY `cod` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `cod` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `telefones`
 --
