@@ -4,7 +4,7 @@ require_once "conecta.php";
 if ($_POST) {
 	
 	//INICIA TRANSAÇÃO
-	$con->beginTransaction();
+	$stmt=$con->beginTransaction();
 	try{
 		
 
@@ -32,8 +32,13 @@ if ($_POST) {
 		$cod_contato = $linha['cod'];
 
 		//die(var_dump($_POST['telefone']));
-		die(var_dump($_POST));
+		//die(var_dump($_POST));
 
+		//PEGA O NUMERO DE TELEFONES=NUMERO DE ETIQUETAS (LABELS)
+		$labels=sizeof($_POST['telefone']);
+		//die(var_dump($labels));
+		
+		$i=1;
 		foreach ($_POST['telefone'] as $key => $value) {
 			/*
 			die(var_dump($_POST['label']));
@@ -48,7 +53,8 @@ if ($_POST) {
 			':label' => $value['label']
 			));
 
-		echo $stmt->rowCount(); 
+			$i++;
+			echo $stmt->rowCount(); 
 		}
 die();
 

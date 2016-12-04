@@ -52,12 +52,14 @@ require_once 'header.php';
 				Telefone:
 
 				<span class="input_tel_wrap">
-					<input required="required" type="text" name="telefone[]" class="form-control  col-md-6 col-sm-6" />
-					<select name="label[]" class="form-control col-md-6 col-sm-6">
-						<option value="Residencial">Residencial</option>
-						<option value="Celular">Celular</option>
-						<option value="Trabalho">Trabalho</option>
-					</select>
+					<div>
+						<input required="required" type="text" name="telefone[]" class="form-control  col-md-6 col-sm-6" />
+						<select name="0"  class="form-control col-md-6 col-sm-6">
+							<option value="Residencial">Residencial</option>
+							<option value="Celular">Celular</option>
+							<option value="Trabalho">Trabalho</option>
+						</select>
+					</div>
 				</span>
 				<button class="btn btn-sm btn-alert  col-md-1 form-inline add_tel_button">+</button>
 			</label>
@@ -66,7 +68,7 @@ require_once 'header.php';
 			<label class="col-md-12 col-sm-12">
 				Email:
 				<span class="input_email_wrap">
-				<input required="required" type="text" name="email[]" class="form-control  col-md-7" />
+					<input required="required" type="text" name="email[]" class="form-control  col-md-7" />
 				</span>
 				<button class="btn btn-sm btn-alert add_email_button col-md-1">+</button>
 			</label>
@@ -87,7 +89,7 @@ require_once 'header.php';
 			    	e.preventDefault();
 			        if(x < max_tel){ //max input box allowed
 			            x++; //text box increment
-			            $(wrapper).append('<div><input required="required" type="text" name="telefone[]" class="form-control  col-md-6 col-sm-6" /><select name="label'+x+'" class="form-control col-md-6 col-sm-6"><option value="Residencial">Residencial</option><option value="Celular">Celular</option><option value="Trabalho">Trabalho</option></select><a href="#" class="remove_tel btn-link">Remover</a></div>'); //add input box
+			            $(wrapper).append('<div><input required="required" type="text" name="telefone[]" class="form-control  col-md-6 col-sm-6" /><select name="'+x+'" class="form-control col-md-6 col-sm-6"><option value="Residencial">Residencial</option><option value="Celular">Celular</option><option value="Trabalho">Trabalho</option></select><a href="#" class="remove_tel btn-link">Remover</a></div>'); //add input box
 			        }
 			    });
 			    

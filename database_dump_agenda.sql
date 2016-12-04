@@ -20,48 +20,68 @@ SET time_zone = "+00:00";
 -- Database: `agenda`
 --
 
+CREATE TABLE `organizacoes` (
+  `cod` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(60)  NOT NULL,
+  `telefone` varchar(14)  NOT NULL,
+  PRIMARY KEY (cod)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 -- --------------------------------------------------------
 
+
+
 --
+
+--
+ALTER TABLE `organizacoes`
+  ADD UNIQUE KEY `cod` (`cod`);
 -- Estrutura da tabela `contatos`
 --
 
 CREATE TABLE `contatos` (
-  `cod` bigint(20) UNSIGNED NOT NULL,
-  `nome` varchar(30) COLLATE utf8_general_ci NOT NULL,
-  `sobrenome` varchar(60) COLLATE utf8_general_ci NOT NULL,
-  `endereco` varchar(60) COLLATE utf8_general_ci NOT NULL,
-  `cep` varchar(9) COLLATE utf8_general_ci NOT NULL,
-  `bairro` varchar(30) COLLATE utf8_general_ci NOT NULL,
-  `cidade` varchar(30) COLLATE utf8_general_ci NOT NULL,
-  `cod_organizacao` int(11) NOT NULL,
+  `cod` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(30)  NOT NULL,
+  `sobrenome` varchar(60)  NOT NULL,
+  `endereco` varchar(60)  NOT NULL,
+  `cep` varchar(9)  NOT NULL,
+  `bairro` varchar(30)  NOT NULL,
+  `cidade` varchar(30)  NOT NULL,
+  `cod_organizacao` bigint(20) NOT NULL,
   `data_criacao` datetime NOT NULL,
-  `data_modificacao` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `data_modificacao` datetime NOT NULL,
+  PRIMARY KEY (cod),
+  KEY cod_organizacao (cod_organizacao),
+  CONSTRAINT fk_contato_3
+  FOREIGN KEY (cod_organizacao) 
+  REFERENCES organizacoes (cod) 
+  ON DELETE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
-
+ALTER TABLE `contatos`
+  ADD UNIQUE KEY `cod` (`cod`);
 --
 -- Estrutura da tabela `emails`
 --
 
 CREATE TABLE `emails` (
-  `cod` bigint(20) UNSIGNED NOT NULL,
-  `cod_contato` int(11) NOT NULL,
-  `email` varchar(60) COLLATE utf8_general_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `cod` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `cod_contato` bigint(20) NOT NULL,
+  `email` varchar(60)  NOT NULL,
+  PRIMARY KEY (cod),
+  KEY cod_contato (cod_contato),
+  CONSTRAINT fk_contato_2
+  FOREIGN KEY (cod_contato) 
+  REFERENCES contatos (cod) 
+  ON DELETE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `organizacoes`
 --
-
-CREATE TABLE `organizacoes` (
-  `cod` bigint(20) UNSIGNED NOT NULL,
-  `nome` varchar(60) COLLATE utf8_general_ci NOT NULL,
-  `telefone` varchar(14) COLLATE utf8_general_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `organizacoes`
@@ -77,13 +97,20 @@ INSERT INTO `organizacoes` (`cod`, `nome`, `telefone`) VALUES
 -- Estrutura da tabela `telefones`
 --
 
-CREATE TABLE `telefones` (
-  `cod` bigint(20) UNSIGNED NOT NULL,
-  `cod_contato` int(11) NOT NULL,
-  `telefone` varchar(14) COLLATE utf8_general_ci NOT NULL,
-  `etiqueta` varchar(20) COLLATE utf8_general_ci NOT NULL COMMENT 'CONSTRAINT chk_Frequency CHECK (Frequency IN (''trabalho'', ''residencial'', ''celular''))'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+
+CREATE TABLE `telefones` (
+  `cod` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `cod_contato` bigint(20) NOT NULL,
+  `telefone` varchar(14),
+  `etiqueta` varchar(14),
+  PRIMARY KEY (cod),
+  KEY cod_contato (cod_contato),
+  CONSTRAINT fk_contato 
+  FOREIGN KEY (cod_contato) 
+  REFERENCES contatos (cod) 
+  ON DELETE CASCADE
+) ENGINE=INNODB;
 --
 -- Indexes for dumped tables
 --
@@ -91,53 +118,15 @@ CREATE TABLE `telefones` (
 --
 -- Indexes for table `contatos`
 --
-ALTER TABLE `contatos`
-  ADD UNIQUE KEY `cod` (`cod`);
-
---
--- Indexes for table `emails`
---
-ALTER TABLE `emails`
-  ADD PRIMARY KEY (`cod`),
-  ADD UNIQUE KEY `cod` (`cod`);
-
---
--- Indexes for table `organizacoes`
---
-ALTER TABLE `organizacoes`
-  ADD UNIQUE KEY `cod` (`cod`);
 
 --
 -- Indexes for table `telefones`
 --
 ALTER TABLE `telefones`
-  ADD PRIMARY KEY (`cod`),
+  
   ADD UNIQUE KEY `cod` (`cod`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
---
--- AUTO_INCREMENT for table `contatos`
---
-ALTER TABLE `contatos`
-  MODIFY `cod` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `emails`
---
-ALTER TABLE `emails`
-  MODIFY `cod` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `organizacoes`
---
-ALTER TABLE `organizacoes`
-  MODIFY `cod` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `telefones`
---
-ALTER TABLE `telefones`
-  MODIFY `cod` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
