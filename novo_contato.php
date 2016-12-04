@@ -88,8 +88,9 @@ require_once 'header.php';
 			    $(add_tel).click(function(e){ //on add input button click
 			    	e.preventDefault();
 			        if(x < max_tel){ //max input box allowed
-			            x++; //text box increment
+			            
 			            $(wrapper).append('<div><input required="required" type="text" name="telefone[]" class="form-control  col-md-6 col-sm-6" /><select name="'+x+'" class="form-control col-md-6 col-sm-6"><option value="Residencial">Residencial</option><option value="Celular">Celular</option><option value="Trabalho">Trabalho</option></select><a href="#" class="remove_tel btn-link">Remover</a></div>'); //add input box
+			        x++;//text box increment
 			        }
 			    });
 			    

@@ -21,7 +21,7 @@ if ($_POST) {
 			':data_modificacao' => date('Y-m-d H:i:s')
 			));
 
-		echo $stmt->rowCount(); 
+		echo $stmt->rowCount(); //EXIBE 1 SE 1 COLUNA FOR ALTERADA
 		//die(var_dump($stmt));
 		//die($con->lastInsertId());
 
@@ -38,25 +38,36 @@ if ($_POST) {
 		$labels=sizeof($_POST['telefone']);
 		//die(var_dump($labels));
 		
-		$i=1;
+		//CONTADOR SELECT "LABELS"
+		$i=0;
 		foreach ($_POST['telefone'] as $key => $value) {
-			/*
-			die(var_dump($_POST['label']));
-			die(var_dump($value));
-			*/
-			echo "tel: ".$value."<br>" ;
-			echo "lab: ".$_POST['label']."<br>" ;
+			//LABEL=ETIQUETA NO BD
+			
+			//muda $i para string
+			$i2="$i";
 			$stmt = $con->prepare('INSERT INTO telefones VALUES(NULL, :cod_contato, :telefone, :label)');
 			$stmt->execute(array(
 			':cod_contato' => $cod_contato,
 			':telefone' => $value,
-			':label' => $value['label']
+			':label' => $_POST[$i2]
 			));
 
 			$i++;
 			echo $stmt->rowCount(); 
 		}
-die();
+
+		foreach ($_POST['email'] as $key => $value) {
+			
+			$stmt = $con->prepare('INSERT INTO emails VALUES(NULL, :cod_contato, :email)');
+			$stmt->execute(array(
+			':cod_contato' => $cod_contato,
+			':email' => $value
+			));
+
+			$i++;
+			echo $stmt->rowCount(); 
+		}
+//die();
 
 	} catch(PDOException $e) {
 		//SE DER PROBLEMA DESFAZ ALTERAÇÕES
