@@ -22,17 +22,26 @@ require_once 'header.php';
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
+		<?php  
+		$consulta = $con->query("SELECT * FROM contatos LEFT JOIN (organizacoes) ON (organizacoes.cod_organizacao=contatos.cod_organizacao);");
+		while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) { 
+			?>
+			<tr>
+				<td>
 
-			<td>
-				<a href="edita_contato.php">
-					Lorem</td>
-				</a>
-				<td>Lorem</td>
-				<td>lorem</td>
-
-
+					<a href="edita_contato.php?c=<?php echo $linha['cod_contato'] ?>">
+						<?php echo $linha['nome_contato'] ?>
+					</a>
+				</td>
+				<td>
+					<a href="edita_contato.php?c=<?php echo $linha['cod_contato'] ?>">
+						<?php echo $linha['sobrenome'] ?>
+					</a>
+				</td>
 			</tr>
+
+			<?php } ?>
+
 		</tbody>
 	</table><!-- /.table-stripped -->
 

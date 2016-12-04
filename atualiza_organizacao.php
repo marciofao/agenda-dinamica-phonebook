@@ -10,7 +10,7 @@ if ($_GET) {
 		try {
 
 
-			$stmt = $con->prepare('UPDATE organizacoes SET nome = :nome, telefone = :telefone WHERE cod = :cod');
+			$stmt = $con->prepare('UPDATE organizacoes SET nome_organizacao = :nome, telefone = :telefone WHERE cod_organizacao = :cod');
 			$stmt->execute(array(
 				':cod'   => $_GET['c'],
 				':nome' => $_POST['nome'],

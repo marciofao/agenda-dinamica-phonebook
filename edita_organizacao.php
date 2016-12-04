@@ -5,7 +5,7 @@ if (!$_GET) { header("location:organizacoes.php"); }
 $title="Editar Organização";
 require_once 'header.php';
 
-$consulta = $con->query("SELECT * FROM organizacoes WHERE cod=".$_GET['c'].";");
+$consulta = $con->query("SELECT * FROM organizacoes WHERE cod_organizacao=".$_GET['c'].";");
 $linha = $consulta->fetch(PDO::FETCH_ASSOC);
 
 ?>

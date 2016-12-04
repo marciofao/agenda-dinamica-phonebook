@@ -6,7 +6,7 @@ if ($_GET) {
 
 
 	try{
-		$stmt = $con->prepare("DELETE FROM organizacoes WHERE cod=".$_GET['c'].";");
+		$stmt = $con->prepare("DELETE FROM organizacoes WHERE cod_organizacao=".$_GET['c'].";");
 
 	//	die(var_dump($stmt));
 		$stmt->execute();

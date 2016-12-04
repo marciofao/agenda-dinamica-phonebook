@@ -42,7 +42,7 @@ require_once 'header.php';
 				while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) { 
 					?>
 					
-					<option value="<?php echo $linha['cod'] ?>"><?php echo $linha['nome'] ?></option>
+					<option value="<?php echo $linha['cod_organizacao'] ?>"><?php echo $linha['nome_organizacao'] ?></option>
 					<?php 	} ?>
 				</select>
 

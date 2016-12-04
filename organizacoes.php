@@ -34,12 +34,12 @@ require_once 'header.php';
 			<tr>
 				<td>
 
-					<a href="edita_organizacao.php?c=<?php echo $linha['cod'] ?>">
-						<?php echo $linha['nome'] ?>
+					<a href="edita_organizacao.php?c=<?php echo $linha['cod_organizacao'] ?>">
+						<?php echo $linha['nome_organizacao'] ?>
 					</a>
 				</td>
 				<td>
-					<a href="edita_organizacao.php?c=<?php echo $linha['cod'] ?>">
+					<a href="edita_organizacao.php?c=<?php echo $linha['cod_organizacao'] ?>">
 						<?php echo $linha['telefone'] ?>
 					</a>
 				</td>
