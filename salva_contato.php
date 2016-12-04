@@ -26,10 +26,10 @@ if ($_POST) {
 		//die($con->lastInsertId());
 
 		//PEGA O COD DO ULTIMO REGISTRO INSERIDO
-		$stmt = $con->query('SELECT cod FROM contatos ORDER BY data_modificacao DESC LIMIT 1;');
+		$stmt = $con->query('SELECT cod_contato FROM contatos ORDER BY data_modificacao DESC LIMIT 1;');
 		$linha = $stmt->fetch(PDO::FETCH_ASSOC);
 		//die(var_dump($linha['cod']));
-		$cod_contato = $linha['cod'];
+		$cod_contato = $linha['cod_contato'];
 
 		//die(var_dump($_POST['telefone']));
 		//die(var_dump($_POST));

@@ -17,7 +17,7 @@ require_once 'header.php';
 	<thead>
 		<tr>
 			<th>Nome</th>
-			<th>Telefone</th>
+			<th>Telefones</th>
 			<th>Organização</th>
 		</tr>
 	</thead>
@@ -30,12 +30,17 @@ require_once 'header.php';
 				<td>
 
 					<a href="edita_contato.php?c=<?php echo $linha['cod_contato'] ?>">
-						<?php echo $linha['nome_contato'] ?>
+						<?php echo $linha['nome_contato']." ".$linha['sobrenome'] ?>
 					</a>
 				</td>
 				<td>
 					<a href="edita_contato.php?c=<?php echo $linha['cod_contato'] ?>">
-						<?php echo $linha['sobrenome'] ?>
+						<?php echo $linha['telefone'] ?>
+					</a>
+				</td>
+				<td>
+					<a href="edita_contato.php?c=<?php echo $linha['cod_contato'] ?>">
+						<?php echo $linha['nome_organizacao'] ?>
 					</a>
 				</td>
 			</tr>
