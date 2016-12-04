@@ -2,6 +2,8 @@
 require_once "conecta.php";
 
 if ($_POST) {
+	//VERIFICA SE TODOS OS CAMPOS FORAM PREENCHIDOS
+	if(in_array(null, $_POST)) die("Favor preencher todos os campos!"); 
 	
 	//INICIA TRANSAÇÃO
 	$stmt=$con->beginTransaction();

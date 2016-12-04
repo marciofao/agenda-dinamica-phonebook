@@ -2,7 +2,8 @@
 require_once "conecta.php";
 
 if ($_POST) {
-	
+	//VERIFICA SE TODOS OS CAMPOS FORAM PREENCHIDOS
+	if(in_array(null, $_POST)) die("Favor preencher todos os campos!"); 
 
 	try{
 		$stmt = $con->prepare('INSERT INTO organizacoes VALUES(NULL, :nome, :telefone)');

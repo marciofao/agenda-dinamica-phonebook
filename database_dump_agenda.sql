@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 04-Dez-2016 às 04:38
+-- Generation Time: 04-Dez-2016 às 07:39
 -- Versão do servidor: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -19,10 +19,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `agenda`
 --
-
---
 CREATE DATABASE IF NOT EXISTS `agenda` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `agenda`;
+
 -- --------------------------------------------------------
 
 --
@@ -37,7 +36,7 @@ CREATE TABLE `contatos` (
   `cep` varchar(9) NOT NULL,
   `bairro` varchar(30) NOT NULL,
   `cidade` varchar(30) NOT NULL,
-  `cod_organizacao` bigint(20) NOT NULL,
+  `cod_org_contato` bigint(20) NOT NULL,
   `data_criacao` datetime NOT NULL,
   `data_modificacao` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -46,8 +45,10 @@ CREATE TABLE `contatos` (
 -- Extraindo dados da tabela `contatos`
 --
 
-INSERT INTO `contatos` (`cod_contato`, `nome_contato`, `sobrenome`, `endereco`, `cep`, `bairro`, `cidade`, `cod_organizacao`, `data_criacao`, `data_modificacao`) VALUES
-(14, 'JoÃ£o', 'Lorempsum', 'Rua das flores', '96015-000', 'asdasd', 'CanguÃ§u', 1, '2016-12-04 04:24:04', '2016-12-04 04:24:04');
+INSERT INTO `contatos` (`cod_contato`, `nome_contato`, `sobrenome`, `endereco`, `cep`, `bairro`, `cidade`, `cod_org_contato`, `data_criacao`, `data_modificacao`) VALUES
+(16, 'Jonatas', 'Amet', 'Rua das flores', '96015-000', 'centro', 'CanguÃ§u', 3, '2016-12-04 07:07:36', '2016-12-04 07:36:35'),
+(17, 'JoÃ£o ClÃ¡udio', 'Andaime', 'Rua das flores', '96015-000', 'sdfsdfsdf', 'CanguÃ§u', 3, '2016-12-04 07:17:47', '2016-12-04 07:18:00'),
+(18, 'Fernando', 'Dolor', 'Av. Palmeiras', '96015-000', 'ASDASD', 'Ijui', 3, '2016-12-04 07:38:26', '2016-12-04 07:38:26');
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,10 @@ CREATE TABLE `emails` (
 --
 
 INSERT INTO `emails` (`cod_email`, `cod_contato`, `email`) VALUES
-(3, 14, 'asdasd');
+(13, 17, 'asdasd@asdasd'),
+(14, 17, 'asdasd@asdasd'),
+(20, 16, 'sdfsfsdfdsf@fsddfsdf'),
+(21, 18, 'asdadsa@asdsad');
 
 -- --------------------------------------------------------
 
@@ -105,9 +109,15 @@ CREATE TABLE `telefones` (
 -- Extraindo dados da tabela `telefones`
 --
 
-INSERT INTO `telefones` (`cod_telefone`, `cod_contato`, `telefone`, `etiqueta`) VALUES
-(22, 14, 'asdasd', 'Residencial'),
-(23, 14, 'asdasd', 'Celular');
+INSERT INTO `telefones` (`cod_telefone`, `cod_contato`, `numero`, `etiqueta`) VALUES
+(43, 17, '34243234', 'Residencial'),
+(44, 17, '234234', 'Celular'),
+(68, 16, '24234234', 'Trabalho'),
+(69, 16, '234234234', 'Residencial'),
+(70, 16, '12312321', 'Residencial'),
+(71, 16, '13123123', 'Celular'),
+(72, 16, '1224234', 'Residencial'),
+(73, 18, '234234', 'Residencial');
 
 --
 -- Indexes for dumped tables
@@ -119,7 +129,7 @@ INSERT INTO `telefones` (`cod_telefone`, `cod_contato`, `telefone`, `etiqueta`) 
 ALTER TABLE `contatos`
   ADD PRIMARY KEY (`cod_contato`),
   ADD UNIQUE KEY `cod` (`cod_contato`),
-  ADD KEY `cod_organizacao` (`cod_organizacao`);
+  ADD KEY `cod_organizacao` (`cod_org_contato`);
 
 --
 -- Indexes for table `emails`
@@ -151,12 +161,12 @@ ALTER TABLE `telefones`
 -- AUTO_INCREMENT for table `contatos`
 --
 ALTER TABLE `contatos`
-  MODIFY `cod_contato` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `cod_contato` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `emails`
 --
 ALTER TABLE `emails`
-  MODIFY `cod_email` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cod_email` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `organizacoes`
 --
@@ -166,7 +176,7 @@ ALTER TABLE `organizacoes`
 -- AUTO_INCREMENT for table `telefones`
 --
 ALTER TABLE `telefones`
-  MODIFY `cod_telefone` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `cod_telefone` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 --
 -- Constraints for dumped tables
 --
@@ -175,7 +185,7 @@ ALTER TABLE `telefones`
 -- Limitadores para a tabela `contatos`
 --
 ALTER TABLE `contatos`
-  ADD CONSTRAINT `fk_contato_3` FOREIGN KEY (`cod_organizacao`) REFERENCES `organizacoes` (`cod_organizacao`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_contato_3` FOREIGN KEY (`cod_org_contato`) REFERENCES `organizacoes` (`cod_organizacao`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `emails`

@@ -4,6 +4,8 @@
 if ($_GET) {
 	//caso houver POST
 	if ($_POST) { 
+		//VERIFICA SE TODOS OS CAMPOS FORAM PREENCHIDOS
+		if(in_array(null, $_POST)) die("Favor preencher todos os campos!"); 
 
 		require_once "conecta.php";
 

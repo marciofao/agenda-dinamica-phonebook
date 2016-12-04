@@ -17,7 +17,7 @@ $linha = $consulta->fetch(PDO::FETCH_ASSOC);
 				Nome:
 			</span>
 			<input required="required" type="text" name="nome" class="form-control form-inline col-md-9" 
-			value="<?php echo $linha['nome']	 ?>" 	/>
+			value="<?php echo $linha['nome_organizacao']	 ?>" 	/>
 		</label>
 		<label>
 			<span class="col-md-3">

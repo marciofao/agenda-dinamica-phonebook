@@ -23,7 +23,7 @@ require_once 'header.php';
 	</thead>
 	<tbody>
 		<?php  
-		$consulta = $con->query("SELECT * FROM contatos LEFT JOIN (organizacoes) ON (organizacoes.cod_organizacao=contatos.cod_organizacao);");
+		$consulta = $con->query("SELECT * FROM contatos LEFT JOIN (organizacoes) ON (organizacoes.cod_organizacao=contatos.cod_org_contato );");
 		while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) { 
 			?>
 			<tr>
@@ -34,24 +34,32 @@ require_once 'header.php';
 					</a>
 				</td>
 				<td>
-					<a href="edita_contato.php?c=<?php echo $linha['cod_contato'] ?>">
-						<?php echo $linha['telefone'] ?>
-					</a>
-				</td>
-				<td>
-					<a href="edita_contato.php?c=<?php echo $linha['cod_contato'] ?>">
-						<?php echo $linha['nome_organizacao'] ?>
-					</a>
-				</td>
-			</tr>
+					<?php  //PEGA TELEFONES DO CONTATO
+					$cons = $con->query("SELECT numero FROM telefones WHERE telefones.cod_contato=".$linha['cod_contato'].";");
+						//die(var_dump($consulta));
+					while ($linha2 = $cons->fetch(PDO::FETCH_ASSOC)) { 
+						?>
+						<div>
+							<a href="edita_contato.php?c=<?php echo $linha['cod_contato'] ?>">
+								<?php echo $linha2['numero'] ?>
+							</a>
+						</div>
+						<?php 	} ?>
+					</td>
+					<td>
+						<a href="edita_contato.php?c=<?php echo $linha['cod_contato'] ?>">
+							<?php echo $linha['nome_organizacao'] ?>
+						</a>
+					</td>
+				</tr>
 
-			<?php } ?>
+				<?php } ?>
 
-		</tbody>
-	</table><!-- /.table-stripped -->
+			</tbody>
+		</table><!-- /.table-stripped -->
 
 
-	<?php
-	require_once 'footer.php';
+		<?php
+		require_once 'footer.php';
 
-	?>
+		?>
