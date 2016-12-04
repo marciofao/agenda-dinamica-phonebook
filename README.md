@@ -1,2 +1,2 @@
 # agenda_melhorenvio
-Agenda desenvolvida para teste submetido a melhorenvio
+Agenda simples para cadastro de contatos desenvolvida para teste submetido a melhorenvio.com.br
