@@ -1,6 +1,5 @@
-# agenda_melhorenvio
-Agenda simples para cadastro de contatos desenvolvida para teste submetido a melhorenvio.com.br
+# Agenda Dinâmica
+Agenda simples para cadastro de contatos desenvolvida para teste.
 
 Feito em PHP 5.6.25 e MySQL 5.7.14
 
-Demonstração do sistema em funcionamento <a target="_blank" rel="nofollow" href="http://m2studios.orgfree.com/outras/agenda_melhorenvio/">aqui</a>.
